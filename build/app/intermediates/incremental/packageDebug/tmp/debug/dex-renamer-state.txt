@@ -1,0 +1,4 @@
+#Sun Oct 13 00:33:40 IST 2019
+base.0=E\:\\All Works\\AndroidStudioProjects\\wallet_flutter\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

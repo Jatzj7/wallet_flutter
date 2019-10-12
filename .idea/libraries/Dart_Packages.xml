@@ -51,6 +51,13 @@
             </list>
           </value>
         </entry>
+        <entry key="intro_views_flutter">
+          <value>
+            <list>
+              <option value="$FLUTTER$/.pub-cache/hosted/pub.dartlang.org/intro_views_flutter-2.8.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="matcher">
           <value>
             <list>
@@ -157,6 +164,7 @@
       <root url="file://$FLUTTER$/.pub-cache/hosted/pub.dartlang.org/charcode-1.1.2/lib" />
       <root url="file://$FLUTTER$/.pub-cache/hosted/pub.dartlang.org/collection-1.14.11/lib" />
       <root url="file://$FLUTTER$/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-0.1.2/lib" />
+      <root url="file://$FLUTTER$/.pub-cache/hosted/pub.dartlang.org/intro_views_flutter-2.8.0/lib" />
       <root url="file://$FLUTTER$/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.5/lib" />
       <root url="file://$FLUTTER$/.pub-cache/hosted/pub.dartlang.org/meta-1.1.6/lib" />
       <root url="file://$FLUTTER$/.pub-cache/hosted/pub.dartlang.org/path-1.6.2/lib" />
