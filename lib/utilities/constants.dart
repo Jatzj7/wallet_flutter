@@ -16,6 +16,13 @@ final kLabelStyle = TextStyle(
   fontFamily: 'OpenSans',
 );
 
+final dashboardActivity = TextStyle(
+  fontSize: 14.0,
+  color: Colors.white,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'OpenSans',
+);
+
 final kBoxDecorationStyle = BoxDecoration(
   color: Color(0xFF6CA8F1),
   borderRadius: BorderRadius.circular(10.0),

@@ -53,7 +53,23 @@ flutter:
   fonts:
     - family: OpenSans
       fonts:
-        - asset: assets/fonts/OpenSans.ttf
+        - asset: assets/icons/OpenSans.ttf
+    - family: Socicon
+      fonts:
+        - asset: assets/icons/Socicon.ttf
+    - family: DeposiIcon
+      fonts:
+        - asset: assets/icons/ic_depositmoney.ttf
+    - family: SendIcon
+      fonts:
+        - asset: assets/icons/ic_sendwallet.ttf
+    - family: WalletIcon
+      fonts:
+        - asset: assets/icons/ic_walletpaypal.ttf
+    - family: PayBillIcon
+      fonts:
+        - asset: assets/icons/ic_billpayment.ttf
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:

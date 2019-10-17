@@ -1,14 +1,15 @@
 #Internal package file, do not edit.
-#Tue Oct 08 17:36:27 IST 2019
+#Thu Oct 17 13:46:35 IST 2019
 17.baseType=DIRECTORY
 4.path=flutter_assets/vm_snapshot_data
 8.set=ASSET
+19.baseType=DIRECTORY
 11.set=ASSET
 2.baseType=DIRECTORY
 4.baseType=DIRECTORY
 14.base=E\:\\All Works\\AndroidStudioProjects\\wallet_flutter\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 16.set=ASSET
-count=19
+count=20
 6.base=E\:\\All Works\\AndroidStudioProjects\\wallet_flutter\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 13.path=flutter_assets/assets/logos/facebook.jpg
 6.baseType=DIRECTORY
@@ -41,6 +42,7 @@ count=19
 2.base=E\:\\All Works\\AndroidStudioProjects\\wallet_flutter\\build\\app\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 18.baseType=DIRECTORY
 1.path=lib/arm64-v8a/libflutter.so
+19.set=ASSET
 0.set=ASSET
 1.baseType=DIRECTORY
 3.baseType=DIRECTORY
@@ -59,10 +61,11 @@ count=19
 2.path=lib/x86/libflutter.so
 9.baseType=DIRECTORY
 18.set=ASSET
+19.base=E\:\\All Works\\AndroidStudioProjects\\wallet_flutter\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 12.base=E\:\\All Works\\AndroidStudioProjects\\wallet_flutter\\build\\app\\intermediates\\transforms\\dexMerger\\debug\\0
 4.set=ASSET
 9.path=flutter_assets/assets/images/bc.png
-18.path=flutter_assets/AssetManifest.json
+18.path=flutter_assets/assets/images/secureintro.jpg
 4.base=E\:\\All Works\\AndroidStudioProjects\\wallet_flutter\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
 11.path=flutter_assets/fonts/MaterialIcons-Regular.ttf
 9.set=ASSET
@@ -73,6 +76,7 @@ count=19
 17.set=ASSET
 13.baseType=DIRECTORY
 13.base=E\:\\All Works\\AndroidStudioProjects\\wallet_flutter\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
+19.path=flutter_assets/AssetManifest.json
 15.baseType=DIRECTORY
 3.set=ASSET
 5.base=E\:\\All Works\\AndroidStudioProjects\\wallet_flutter\\build\\app\\intermediates\\merged_assets\\debug\\mergeDebugAssets\\out
