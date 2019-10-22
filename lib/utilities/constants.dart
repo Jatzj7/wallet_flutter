@@ -16,6 +16,13 @@ final kLabelStyle = TextStyle(
   fontFamily: 'OpenSans',
 );
 
+final dashboardMoreActivity = TextStyle(
+  fontSize: 14.0,
+  color: Colors.black,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'OpenSans',
+);
+
 final dashboardActivity = TextStyle(
   fontSize: 14.0,
   color: Colors.white,
