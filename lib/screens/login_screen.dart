@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wallet_flutter/main_page.dart';
 import 'package:wallet_flutter/screens/dashboard.dart';
 import 'package:wallet_flutter/screens/signup_screen.dart';
 import 'package:wallet_flutter/utilities/constants.dart';
@@ -88,11 +89,8 @@ class _LoginScreenState extends State<LoginScreen> {
         elevation: 5.0,
         onPressed: enableLogInButton
             ? () {
-          Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Dashboard()),
-                );
+          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+              MainPage()), (Route<dynamic> route) => false);
               }
             : null,
         padding: EdgeInsets.all(15.0),

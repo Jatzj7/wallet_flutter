@@ -90,12 +90,8 @@ class _IntroPageState extends State<IntroPage> {
           showNextButton: true,
           showBackButton: true,
           onTapDoneButton: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => LoginScreen(),
-              ), //MaterialPageRoute
-            );
+            Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                LoginScreen()), (Route<dynamic> route) => false);
           },
           pageButtonTextStyles: TextStyle(
             color: Colors.white,
