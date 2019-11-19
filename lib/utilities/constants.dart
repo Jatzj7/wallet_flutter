@@ -16,7 +16,30 @@ final kLabelStyle = TextStyle(
   fontFamily: 'OpenSans',
 );
 
-
+final subheadStyleGrey = TextStyle(
+  fontSize: 14.0,
+  color: Colors.grey,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'OpenSans',
+);
+final headStyleBlack = TextStyle(
+  fontSize: 14.0,
+  color: Colors.black,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'OpenSans',
+);
+final dashboardBalanceActivity = TextStyle(
+  fontSize: 20.0,
+  color: Colors.black,
+  fontWeight: FontWeight.bold,
+  fontFamily: 'OpenSans',
+);
+final dashboardAvailableActivity = TextStyle(
+  fontSize: 12.0,
+  color: Colors.black26,
+  fontWeight: FontWeight.normal,
+  fontFamily: 'OpenSans',
+);
 
 final dashboardMoreActivity = TextStyle(
   fontSize: 14.0,

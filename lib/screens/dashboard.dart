@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wallet_flutter/screens/request_screen.dart';
-import 'package:wallet_flutter/screens/send_screen.dart';
+import 'package:wallet_flutter/screens/payment_screen.dart';
+import 'package:wallet_flutter/screens/recharge_screen.dart';
 import 'package:wallet_flutter/utilities/constants.dart';
 
 class Dashboard extends StatefulWidget {
@@ -198,12 +198,7 @@ class _DashboardState extends State<Dashboard> {
                             color: Colors.white,
                           ),
                         ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => SendScreen()),
-                          );
-                        },
+                        onTap: () {},
                       ),
                     ),
                   ),
@@ -230,10 +225,6 @@ class _DashboardState extends State<Dashboard> {
                               color: Colors.white),
                         ),
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => RechargeScreen()),
-                          );
                         },
                       ),
                     ),

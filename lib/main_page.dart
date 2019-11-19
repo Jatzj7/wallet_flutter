@@ -1,10 +1,9 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:wallet_flutter/screens/dashboard.dart';
 import 'package:wallet_flutter/screens/dashboard_screen.dart';
+import 'package:wallet_flutter/screens/payment_screen.dart';
 import 'package:wallet_flutter/screens/profile_screen.dart';
-import 'package:wallet_flutter/screens/request_screen.dart';
-import 'package:wallet_flutter/screens/send_screen.dart';
+import 'package:wallet_flutter/screens/recharge_screen.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -17,9 +16,9 @@ class _MainPageState extends State<MainPage> {
   int _selectedPage = 0;
   final _pageOptions = [
     DashboardPage(),
-    SendScreen(),
     RechargeScreen(),
-    RequestScreen()
+    PaymentScreen(),
+    ProfileScreen(),
   ];
 
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
+import 'package:wallet_flutter/main_page.dart';
 import 'package:wallet_flutter/screens/login_screen.dart';
 import 'package:wallet_flutter/utilities/constants.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Login UI',
       debugShowCheckedModeBanner: false,
-      home: IntroPage(),
+      home: MainPage(),
     );
   }
 }

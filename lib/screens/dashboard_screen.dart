@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:wallet_flutter/screens/dashboard.dart';
+import 'package:wallet_flutter/utilities/constants.dart';
 
 class DashboardPage extends StatefulWidget {
   @override
@@ -49,46 +50,50 @@ class _DashboardPageState extends State<DashboardPage> {
       child: GestureDetector(
         onTap: () {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Dashboard()));
+            context,
+            MaterialPageRoute(builder: (context) => Dashboard()),
+          );
         },
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(title,
-                  style: TextStyle(
-                      color: Color(color),
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'OpenSans',
-                      fontSize: 14.0)),
-              SizedBox(height: 10.0),
-              Expanded(
-                  child: charts.PieChart(
-                _seriesPieData,
-                animate: true,
-                animationDuration: Duration(seconds: 2),
-                behaviors: [
-                  charts.DatumLegend(
-                    outsideJustification:
-                        charts.OutsideJustification.endDrawArea,
-                    horizontalFirst: false,
-                    desiredMaxRows: 2,
-                    cellPadding: EdgeInsets.all(4.0),
-                    entryTextStyle: charts.TextStyleSpec(
-                        color: charts.MaterialPalette.purple.shadeDefault,
+        child: Container(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(title,
+                    style: TextStyle(
+                        color: Color(color),
+                        fontWeight: FontWeight.bold,
                         fontFamily: 'OpenSans',
-                        fontSize: 11),
-                  )
-                ],
-                defaultRenderer: charts.ArcRendererConfig(
-                    arcWidth: 100,
-                    arcRendererDecorators: [
-                      charts.ArcLabelDecorator(
-                          labelPosition: charts.ArcLabelPosition.inside)
-                    ]),
-              )),
-            ],
+                        fontSize: 14.0)),
+                SizedBox(height: 10.0),
+                Expanded(
+                    child: charts.PieChart(
+                  _seriesPieData,
+                  animate: true,
+                  animationDuration: Duration(seconds: 2),
+                  behaviors: [
+                    charts.DatumLegend(
+                      outsideJustification:
+                          charts.OutsideJustification.endDrawArea,
+                      horizontalFirst: false,
+                      desiredMaxRows: 2,
+                      cellPadding: EdgeInsets.all(4.0),
+                      entryTextStyle: charts.TextStyleSpec(
+                          color: charts.MaterialPalette.purple.shadeDefault,
+                          fontFamily: 'OpenSans',
+                          fontSize: 11),
+                    )
+                  ],
+                  defaultRenderer: charts.ArcRendererConfig(
+                      arcWidth: 100,
+                      arcRendererDecorators: [
+                        charts.ArcLabelDecorator(
+                            labelPosition: charts.ArcLabelPosition.inside)
+                      ]),
+                )),
+              ],
+            ),
           ),
         ),
       ),
@@ -102,7 +107,10 @@ class _DashboardPageState extends State<DashboardPage> {
       shadowColor: Color(0x802196F3),
       borderRadius: BorderRadius.circular(24.0),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => Dashboard()),
+        );},
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -114,7 +122,23 @@ class _DashboardPageState extends State<DashboardPage> {
                     color: Color(color),
                     fontWeight: FontWeight.bold,
                     fontFamily: 'OpenSans',
-                    fontSize: 14.0),
+                    fontSize: 18.0),
+              ),
+              Text(
+                'McDonald\'s',
+                style: dashboardBalanceActivity
+              ),
+              Text(
+                  '- \$18',
+                  style: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'OpenSans',
+                      fontSize: 18.0),
+              ),
+              Text(
+                  '13 November',
+                  style: dashboardAvailableActivity
               ),
             ],
           ),
@@ -144,33 +168,13 @@ class _DashboardPageState extends State<DashboardPage> {
                     fontFamily: 'OpenSans',
                     fontSize: 14.0),
               ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Material myWeeklyExpenditure(String title, int color) {
-    return Material(
-      color: Colors.white,
-      elevation: 14.0,
-      shadowColor: Color(0x802196F3),
-      borderRadius: BorderRadius.circular(24.0),
-      child: GestureDetector(
-        onTap: () {},
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
               Text(
-                title,
-                style: TextStyle(
-                    color: Color(color),
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'OpenSans',
-                    fontSize: 14.0),
+                '\$1500',
+                style: dashboardBalanceActivity
+              ),
+              Text(
+                  '\$15000.00 Available',
+                  style: dashboardAvailableActivity
               ),
             ],
           ),
@@ -186,7 +190,6 @@ class _DashboardPageState extends State<DashboardPage> {
         leading: Container(),
         title: Text('Dashboard'),
         centerTitle: true,
-        actions: <Widget>[Icon(Icons.settings)],
       ),
       body: StaggeredGridView.count(
         crossAxisCount: 2,
@@ -196,14 +199,14 @@ class _DashboardPageState extends State<DashboardPage> {
         children: <Widget>[
           myHead("Total Spending", 0xffed622b),
           myTotalBalance('Total Balance', 0xffff3266),
-          myTransaction('Transactions', 0xff26cb3c),
-          myWeeklyExpenditure('Weekly Expense', 0xff622f74)
+          myTransaction('Payments', 0xff622f74),
+          myTotalBalance('Total Balance', 0xfff4c83f),
         ],
         staggeredTiles: [
-          StaggeredTile.extent(2, MediaQuery.of(context).size.height * 0.5),
+          StaggeredTile.extent(2, 400.0),
+          StaggeredTile.extent(1, 100.0),
           StaggeredTile.extent(1, 200.0),
-          StaggeredTile.extent(1, 200.0),
-          StaggeredTile.extent(2, 300),
+          StaggeredTile.extent(1, 100.0),
         ],
       ),
     );
