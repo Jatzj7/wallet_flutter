@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
+final addHintTextStyle = TextStyle(
+  color: Colors.grey,
+  fontSize: 30.0,
+  fontFamily: 'OpenSans',
+);
+final addTextStyle = TextStyle(
+  color: Colors.black,
+  fontSize: 30.0,
+  fontFamily: 'OpenSans',
+);
 final kHintTextStyle = TextStyle(
   color: Colors.white54,
   fontFamily: 'OpenSans',

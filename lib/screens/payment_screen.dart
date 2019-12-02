@@ -13,6 +13,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         leading: Container(),
         title: Text('Payment'),
         centerTitle: true,
+        
       ),
     );
   }

@@ -11,7 +11,7 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   List<charts.Series<Spend, String>> _seriesPieData;
-
+  List<charts.Series<SpendDaily, String>> _seriesBarData;
   _generateData() {
     var spendPieData = [
       new Spend('Shopping', 10, Color(0xff3366cc)),
@@ -20,6 +20,28 @@ class _DashboardPageState extends State<DashboardPage> {
       new Spend('Entertainment', 15, Color(0xfffdbe19)),
       new Spend('Donation', 15, Color(0xffff9900)),
     ];
+    var spendBarData = [
+      new SpendDaily('1/12/19', 100,
+          charts.ColorUtil.fromDartColor(Colors.deepPurpleAccent)),
+      new SpendDaily('2/12/19', 150,
+          charts.ColorUtil.fromDartColor(Colors.deepPurpleAccent)),
+      new SpendDaily('3/12/19', 50,
+          charts.ColorUtil.fromDartColor(Colors.deepPurpleAccent)),
+      new SpendDaily('4/12/19', 70,
+          charts.ColorUtil.fromDartColor(Colors.deepPurpleAccent)),
+      new SpendDaily('5/12/19', 80,
+          charts.ColorUtil.fromDartColor(Colors.deepPurpleAccent)),
+    ];
+    _seriesBarData.add(
+      charts.Series(
+        data: spendBarData,
+        domainFn: (SpendDaily spendDaily, _) => spendDaily.day,
+        measureFn: (SpendDaily spendDaily, _) => spendDaily.amount,
+        colorFn: (SpendDaily spendDaily, _) => spendDaily.barColor,
+        id: 'Daily Expenditure',
+//        labelAccessorFn: (Spend spend, _) => '${spend.cost}',
+      ),
+    );
 
     _seriesPieData.add(
       charts.Series(
@@ -38,6 +60,7 @@ class _DashboardPageState extends State<DashboardPage> {
   void initState() {
     super.initState();
     _seriesPieData = List<charts.Series<Spend, String>>();
+    _seriesBarData = List<charts.Series<SpendDaily, String>>();
     _generateData();
   }
 
@@ -68,30 +91,75 @@ class _DashboardPageState extends State<DashboardPage> {
                         fontSize: 14.0)),
                 SizedBox(height: 10.0),
                 Expanded(
-                    child: charts.PieChart(
-                  _seriesPieData,
-                  animate: true,
-                  animationDuration: Duration(seconds: 2),
-                  behaviors: [
-                    charts.DatumLegend(
-                      outsideJustification:
-                          charts.OutsideJustification.endDrawArea,
-                      horizontalFirst: false,
-                      desiredMaxRows: 2,
-                      cellPadding: EdgeInsets.all(4.0),
-                      entryTextStyle: charts.TextStyleSpec(
-                          color: charts.MaterialPalette.purple.shadeDefault,
-                          fontFamily: 'OpenSans',
-                          fontSize: 11),
-                    )
-                  ],
-                  defaultRenderer: charts.ArcRendererConfig(
-                      arcWidth: 100,
-                      arcRendererDecorators: [
-                        charts.ArcLabelDecorator(
-                            labelPosition: charts.ArcLabelPosition.inside)
-                      ]),
-                )),
+                  child: charts.PieChart(
+                    _seriesPieData,
+                    animate: true,
+                    animationDuration: Duration(seconds: 2),
+                    behaviors: [
+                      charts.DatumLegend(
+                        outsideJustification:
+                            charts.OutsideJustification.endDrawArea,
+                        horizontalFirst: false,
+                        desiredMaxRows: 2,
+                        cellPadding: EdgeInsets.all(4.0),
+                        entryTextStyle: charts.TextStyleSpec(
+                            color: charts.MaterialPalette.purple.shadeDefault,
+                            fontFamily: 'OpenSans',
+                            fontSize: 11),
+                      )
+                    ],
+                    defaultRenderer: charts.ArcRendererConfig(
+                        arcWidth: 100,
+                        arcRendererDecorators: [
+                          charts.ArcLabelDecorator(
+                              labelPosition: charts.ArcLabelPosition.inside)
+                        ]),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Material myDailySpend(String title, int color) {
+    return Material(
+      color: Colors.white,
+      elevation: 14.0,
+      shadowColor: Color(0x802196F3),
+      borderRadius: BorderRadius.circular(24.0),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Dashboard()),
+          );
+        },
+        child: Container(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(title,
+                    style: TextStyle(
+                        color: Color(color),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'OpenSans',
+                        fontSize: 14.0)),
+                SizedBox(height: 10.0),
+                Expanded(
+                  child: charts.BarChart(
+                    _seriesBarData,
+                    animate: true,
+                    animationDuration: Duration(seconds: 2),
+                    domainAxis: new charts.OrdinalAxisSpec(
+                        showAxisLine: false,
+                        renderSpec: new charts.NoneRenderSpec()),
+                  ),
+                ),
               ],
             ),
           ),
@@ -107,10 +175,12 @@ class _DashboardPageState extends State<DashboardPage> {
       shadowColor: Color(0x802196F3),
       borderRadius: BorderRadius.circular(24.0),
       child: GestureDetector(
-        onTap: () {Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => Dashboard()),
-        );},
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Dashboard()),
+          );
+        },
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -124,22 +194,16 @@ class _DashboardPageState extends State<DashboardPage> {
                     fontFamily: 'OpenSans',
                     fontSize: 18.0),
               ),
+              Text('McDonald\'s', style: dashboardBalanceActivity),
               Text(
-                'McDonald\'s',
-                style: dashboardBalanceActivity
+                '- \$18',
+                style: TextStyle(
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'OpenSans',
+                    fontSize: 18.0),
               ),
-              Text(
-                  '- \$18',
-                  style: TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'OpenSans',
-                      fontSize: 18.0),
-              ),
-              Text(
-                  '13 November',
-                  style: dashboardAvailableActivity
-              ),
+              Text('13 November', style: dashboardAvailableActivity),
             ],
           ),
         ),
@@ -168,14 +232,8 @@ class _DashboardPageState extends State<DashboardPage> {
                     fontFamily: 'OpenSans',
                     fontSize: 14.0),
               ),
-              Text(
-                '\$1500',
-                style: dashboardBalanceActivity
-              ),
-              Text(
-                  '\$15000.00 Available',
-                  style: dashboardAvailableActivity
-              ),
+              Text('\$1500', style: dashboardBalanceActivity),
+              Text('\$15000.00 Available', style: dashboardAvailableActivity),
             ],
           ),
         ),
@@ -200,7 +258,7 @@ class _DashboardPageState extends State<DashboardPage> {
           myHead("Total Spending", 0xffed622b),
           myTotalBalance('Total Balance', 0xffff3266),
           myTransaction('Payments', 0xff622f74),
-          myTotalBalance('Total Balance', 0xfff4c83f),
+          myDailySpend('Daily Expenditure', 0xfff4c83f),
         ],
         staggeredTiles: [
           StaggeredTile.extent(2, 400.0),
@@ -219,4 +277,12 @@ class Spend {
   Color colorVal;
 
   Spend(this.spendOn, this.cost, this.colorVal);
+}
+
+class SpendDaily {
+  final String day;
+  final int amount;
+  final charts.Color barColor;
+
+  SpendDaily(this.day, this.amount, this.barColor);
 }
